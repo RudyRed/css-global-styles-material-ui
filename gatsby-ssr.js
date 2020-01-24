@@ -1,7 +1,32 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
+import React from 'react'
 
-// You can delete this file if you're not using it
+import { ThemeProvider } from '@material-ui/styles'
+import { createMuiTheme } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
+
+import theme from './styles'
+
+const muiTheme = createMuiTheme(theme.muiTheme)
+
+function RootWrapper({
+  children,
+  ThemeProvider,
+  CssBaseline,
+  muiTheme,
+}) {
+  return (
+    <ThemeProvider theme={muiTheme}>
+      <CssBaseline />
+          {children}
+    </ThemeProvider>
+  )
+}
+
+export const wrapRootElement = ({ element }) => {
+  return <RootWrapper
+  muiTheme={muiTheme}
+  ThemeProvider={ThemeProvider}
+  CssBaseline={CssBaseline}
+>{element}
+</RootWrapper>
+}
