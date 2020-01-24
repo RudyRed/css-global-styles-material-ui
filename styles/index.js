@@ -8,7 +8,7 @@ exports.muiTheme = {
   overrides: {
     MuiButton,
   },
-  typography,
   palette,
+  typography,
   shadows,
 }
